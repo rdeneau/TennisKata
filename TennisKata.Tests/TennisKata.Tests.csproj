@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SpecFlow.xUnit" Version="2.3.2" />
+    <PackageReference Include="SpecRun.SpecFlow" Version="1.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GameScore.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GameScore.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="GameScore.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GameScore.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
