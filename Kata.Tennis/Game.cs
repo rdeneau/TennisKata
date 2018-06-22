@@ -1,31 +1,26 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Kata.Tennis
 {
     public class Game
     {
-        private PlayerScoreBase receiver;
-        private PlayerScoreBase server;
-
-        private PlayerScoreBase[] PlayerScores => new[] {server, receiver};
+        private IEnumerable<Score> _scores;
 
         public void Parse(string score)
         {
-            var result = PlayerScoreBase.Parse(score).ToArray();
-            server   = result[0];
-            receiver = result[1];
+            _scores = Tennis.Score.Parse(score);
         }
 
-        public void PointFor(Player player)
+        public void PointFor(Player wins)
         {
-            server   = server  .PointFor(player);
-            receiver = receiver.PointFor(player);
+            _scores = _scores.Select(player => player.PointFor(wins));
         }
 
-        public string Score()
-        {
-            var winner = PlayerScores.FirstOrDefault(score => score.GameOver);
-            return winner?.ToString() ?? $"{server}:{receiver}";
-        }
+        public string Score() => _scores
+            .Where(score => score.IsGameWon)
+            .DefaultsIfEmpty(_scores)
+            .Select(score => score.Format())
+            .JoinToString(":");
     }
 }

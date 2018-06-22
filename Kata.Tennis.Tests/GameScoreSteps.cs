@@ -1,31 +1,29 @@
-﻿using System;
-using NFluent;
+﻿using NFluent;
 using TechTalk.SpecFlow;
-using Xunit;
 
 namespace Kata.Tennis.Tests
 {
     [Binding]
     public class GameScoreSteps
     {
-        private readonly Game game = new Game();
+        private readonly Game _game = new Game();
 
         [Given(@"the score is (.*)")]
         public void GivenScoreLoveAll(string score)
         {
-            game.Parse(score);
+            _game.Parse(score);
         }
     
         [When(@"the (.*) wins a point")]
         public void WhenAPlayerWinsAPoint(Player player)
         {
-            game.PointFor(player);
+            _game.PointFor(player);
         }
 
         [Then(@"the score is (.*)")]
         public void ThenTheScoreIs(string expectedScore)
         {
-            Check.That(game.Score()).IsEqualTo(expectedScore);
+            Check.That(_game.Score()).IsEqualTo(expectedScore);
         }
     }
 }
