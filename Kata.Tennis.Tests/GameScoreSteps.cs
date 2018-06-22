@@ -8,7 +8,7 @@ namespace Kata.Tennis.Tests
     [Binding]
     public class GameScoreSteps
     {
-        private Game game = new Game();
+        private readonly Game game = new Game();
 
         [Given(@"the score is (.*)")]
         public void GivenScoreLoveAll(string score)

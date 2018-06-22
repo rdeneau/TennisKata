@@ -90,6 +90,24 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute(DisplayName="Receiver wins a point on fifteen-all")]
+        [Xunit.TraitAttribute("FeatureTitle", "Tennis Game Score")]
+        [Xunit.TraitAttribute("Description", "Receiver wins a point on fifteen-all")]
+        public virtual void ReceiverWinsAPointOnFifteen_All()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Receiver wins a point on fifteen-all", ((string[])(null)));
+#line 13
+this.ScenarioSetup(scenarioInfo);
+#line 14
+ testRunner.Given("the score is 15:15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 15
+ testRunner.When("the receiver wins a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
+ testRunner.Then("the score is 15:30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.2.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

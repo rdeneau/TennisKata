@@ -9,3 +9,8 @@ Scenario: Server wins a point on love-all
 	Given the score is 0:0
 	When the server wins a point
 	Then the score is 15:0
+
+Scenario: Receiver wins a point on fifteen-all
+	Given the score is 15:15
+	When the receiver wins a point
+	Then the score is 15:30
