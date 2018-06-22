@@ -25,7 +25,7 @@ namespace Kata.Tennis.Tests
         [Then(@"the score is (.*)")]
         public void ThenTheScoreIs(string expectedScore)
         {
-            Check.That(game.Score).IsEqualTo(expectedScore);
+            Check.That(game.Score()).IsEqualTo(expectedScore);
         }
     }
 }

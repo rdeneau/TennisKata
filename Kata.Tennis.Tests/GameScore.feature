@@ -14,3 +14,14 @@ Scenario: Receiver wins a point on fifteen-all
 	Given the score is 15:15
 	When the receiver wins a point
 	Then the score is 15:30
+
+
+Scenario: Server wins a point on thirty-all
+	Given the score is 30:30
+	When the server wins a point
+	Then the score is 40:30
+
+Scenario: Server wins the game on fourty-love
+	Given the score is 40:0
+	When the server wins a point
+	Then the score is server wins!

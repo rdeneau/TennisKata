@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Kata.Tennis
 {
     public class Game
     {
-        private PlayerScore receiver;
-        private PlayerScore server;
+        private PlayerScoreBase receiver;
+        private PlayerScoreBase server;
+
+        private PlayerScoreBase[] PlayerScores => new[] {server, receiver};
 
         public void Parse(string score)
         {
-            var result = PlayerScore.Parse(score).ToArray();
+            var result = PlayerScoreBase.Parse(score).ToArray();
             server   = result[0];
             receiver = result[1];
         }
@@ -21,32 +22,10 @@ namespace Kata.Tennis
             receiver = receiver.PointFor(player);
         }
 
-        public string Score => $"{server}:{receiver}";
-    }
-
-    public class PlayerScore
-    {
-        private readonly Player player;
-        private readonly int points;
-
-        public PlayerScore(Player player, int points)
+        public string Score()
         {
-            this.player = player;
-            this.points = points;
+            var winner = PlayerScores.FirstOrDefault(score => score.GameOver);
+            return winner?.ToString() ?? $"{server}:{receiver}";
         }
-
-        public static IEnumerable<PlayerScore> Parse(string score)
-        {
-            return score.Split(':')
-                        .Select(int.Parse)
-                        .Select((points, index) => new PlayerScore((Player) index, points));
-        }
-
-        public PlayerScore PointFor(Player wins)
-        {
-            return player == wins ? new PlayerScore(player, points + 15) : this;
-        }
-
-        public override string ToString() => points.ToString("0");
     }
 }
