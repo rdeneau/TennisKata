@@ -71,6 +71,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="GameScoreSteps.cs" />
+    <Compile Include="IncreasingScoreSetShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

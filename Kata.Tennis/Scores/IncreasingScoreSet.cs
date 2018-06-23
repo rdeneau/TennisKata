@@ -8,6 +8,13 @@ namespace Kata.Tennis.Scores
         public override bool IsWinner => false;
         private readonly IEnumerable<Score> _scores;
 
+        private static Score Create(IEnumerable<Score> scores)
+        {
+            Score result = new IncreasingScoreSet(scores);
+            Score deuce  = new DeuceScore();
+            return result.Format() == deuce.Format() ? deuce : result;
+        }
+
         private static IEnumerable<Score> CreateInnerScores(string score) =>
             score.Split(PointsSeparator)
                  .Select((points, index) =>
@@ -27,7 +34,7 @@ namespace Kata.Tennis.Scores
         {
             var nextScores  = _scores.Select(x => x.PointFor(wins)).ToList();
             var winnerScore = nextScores.FirstOrDefault(x => x.IsWinner);
-            return winnerScore ?? new IncreasingScoreSet(nextScores);
+            return winnerScore ?? Create(nextScores);
         }
     }
 }

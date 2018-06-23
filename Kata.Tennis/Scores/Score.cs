@@ -8,7 +8,7 @@ namespace Kata.Tennis.Scores
         public abstract string Format();
         public abstract Score PointFor(Player wins);
 
-        protected const string A = "A";
+        protected const string Advantage = "A";
         protected const char PointsSeparator = ':';
         protected const int MaxPoint = 40;
 
