@@ -11,13 +11,13 @@ namespace Kata.Tennis.Tests
         private Player _wins;
 
         [Given(@"the score is (.*)")]
-        public void GivenScoreLoveAll(string score)
+        public void GivenInitialScore(string score)
         {
             _score = score;
         }
     
-        [When(@"the (.*) wins a point")]
-        public void WhenAPlayerWinsAPoint(Player player)
+        [When(@"the (.*) wins the point")]
+        public void WhenThePlayerWinsThePoint(Player player)
         {
             _wins = player;
         }

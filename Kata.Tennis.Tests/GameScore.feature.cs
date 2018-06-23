@@ -72,110 +72,36 @@ namespace Kata.Tennis.Tests
             this.ScenarioTearDown();
         }
         
-        [Xunit.FactAttribute(DisplayName="Server wins a point on love-all")]
+        [Xunit.TheoryAttribute(DisplayName="Winning a point changes the score")]
         [Xunit.TraitAttribute("FeatureTitle", "Tennis Game Score")]
-        [Xunit.TraitAttribute("Description", "Server wins a point on love-all")]
-        public virtual void ServerWinsAPointOnLove_All()
+        [Xunit.TraitAttribute("Description", "Winning a point changes the score")]
+        [Xunit.InlineDataAttribute("0:0", "server", "15:0", new string[0])]
+        [Xunit.InlineDataAttribute("15:0", "receiver", "15:15", new string[0])]
+        [Xunit.InlineDataAttribute("15:15", "receiver", "15:30", new string[0])]
+        [Xunit.InlineDataAttribute("15:30", "server", "30:30", new string[0])]
+        [Xunit.InlineDataAttribute("30:30", "server", "40:30", new string[0])]
+        [Xunit.InlineDataAttribute("30:40", "server", "40:40", new string[0])]
+        [Xunit.InlineDataAttribute("30:0", "server", "40:0", new string[0])]
+        [Xunit.InlineDataAttribute("40:0", "server", "server wins!", new string[0])]
+        [Xunit.InlineDataAttribute("40:30", "server", "server wins!", new string[0])]
+        [Xunit.InlineDataAttribute("15:40", "receiver", "receiver wins!", new string[0])]
+        [Xunit.InlineDataAttribute("40:40", "server", "A:40", new string[0])]
+        [Xunit.InlineDataAttribute("40:A", "server", "40:40", new string[0])]
+        [Xunit.InlineDataAttribute("40:40", "receiver", "40:A", new string[0])]
+        [Xunit.InlineDataAttribute("A:40", "receiver", "40:40", new string[0])]
+        [Xunit.InlineDataAttribute("A:40", "server", "server wins!", new string[0])]
+        [Xunit.InlineDataAttribute("40:A", "receiver", "receiver wins!", new string[0])]
+        public virtual void WinningAPointChangesTheScore(string initial_Score, string player, string expected_Score, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Server wins a point on love-all", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Winning a point changes the score", exampleTags);
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9
- testRunner.Given("the score is 0:0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("the score is {0}", initial_Score), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
- testRunner.When("the server wins a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("the {0} wins the point", player), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
- testRunner.Then("the score is 15:0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Receiver wins a point on fifteen-all")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tennis Game Score")]
-        [Xunit.TraitAttribute("Description", "Receiver wins a point on fifteen-all")]
-        public virtual void ReceiverWinsAPointOnFifteen_All()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Receiver wins a point on fifteen-all", ((string[])(null)));
-#line 13
-this.ScenarioSetup(scenarioInfo);
-#line 14
- testRunner.Given("the score is 15:15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 15
- testRunner.When("the receiver wins a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 16
- testRunner.Then("the score is 15:30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Server wins a point on thirty-all")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tennis Game Score")]
-        [Xunit.TraitAttribute("Description", "Server wins a point on thirty-all")]
-        public virtual void ServerWinsAPointOnThirty_All()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Server wins a point on thirty-all", ((string[])(null)));
-#line 19
-this.ScenarioSetup(scenarioInfo);
-#line 20
- testRunner.Given("the score is 30:30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 21
- testRunner.When("the server wins a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 22
- testRunner.Then("the score is 40:30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Server wins the game on fourty-love")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tennis Game Score")]
-        [Xunit.TraitAttribute("Description", "Server wins the game on fourty-love")]
-        public virtual void ServerWinsTheGameOnFourty_Love()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Server wins the game on fourty-love", ((string[])(null)));
-#line 24
-this.ScenarioSetup(scenarioInfo);
-#line 25
- testRunner.Given("the score is 40:0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 26
- testRunner.When("the server wins a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 27
- testRunner.Then("the score is server wins!", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Server wins a point on deuce")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tennis Game Score")]
-        [Xunit.TraitAttribute("Description", "Server wins a point on deuce")]
-        public virtual void ServerWinsAPointOnDeuce()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Server wins a point on deuce", ((string[])(null)));
-#line 29
-this.ScenarioSetup(scenarioInfo);
-#line 30
- testRunner.Given("the score is 40:40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 31
- testRunner.When("the server wins a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 32
- testRunner.Then("the score is A:40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Server wins a point on advantage receiver")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tennis Game Score")]
-        [Xunit.TraitAttribute("Description", "Server wins a point on advantage receiver")]
-        public virtual void ServerWinsAPointOnAdvantageReceiver()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Server wins a point on advantage receiver", ((string[])(null)));
-#line 34
-this.ScenarioSetup(scenarioInfo);
-#line 35
- testRunner.Given("the score is 40:A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 36
- testRunner.When("the server wins a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 37
- testRunner.Then("the score is 40:40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the score is {0}", expected_Score), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

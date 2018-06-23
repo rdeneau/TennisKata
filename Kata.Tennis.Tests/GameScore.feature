@@ -5,33 +5,30 @@ Feature: Tennis Game Score
 	I want the score to increase when a player wins a point
 	So that I can display the current score correctly
 
-Scenario: Server wins a point on love-all
-	Given the score is 0:0
-	When the server wins a point
-	Then the score is 15:0
+Scenario Outline: Winning a point changes the score
+	Given the score is <initial_score>
+	When the <player> wins the point
+	Then the score is <expected_score>
 
-Scenario: Receiver wins a point on fifteen-all
-	Given the score is 15:15
-	When the receiver wins a point
-	Then the score is 15:30
-
-
-Scenario: Server wins a point on thirty-all
-	Given the score is 30:30
-	When the server wins a point
-	Then the score is 40:30
-
-Scenario: Server wins the game on fourty-love
-	Given the score is 40:0
-	When the server wins a point
-	Then the score is server wins!
-
-Scenario: Server wins a point on deuce
-	Given the score is 40:40
-	When the server wins a point
-	Then the score is A:40
-
-Scenario: Server wins a point on advantage receiver
-	Given the score is 40:A
-	When the server wins a point
-	Then the score is 40:40
+	Examples:
+	| initial_score | player   | expected_score |
+	# Increasing scores
+	| 0:0           | server   | 15:0           |
+	| 15:0          | receiver | 15:15          |
+	| 15:15         | receiver | 15:30          |
+	| 15:30         | server   | 30:30          |
+	| 30:30         | server   | 40:30          |
+	| 30:40         | server   | 40:40          |
+	| 30:0          | server   | 40:0           |
+	# Game won from an increasing score
+	| 40:0          | server   | server wins!   |
+	| 40:30         | server   | server wins!   |
+	| 15:40         | receiver | receiver wins! |
+	# Ending scores
+	| 40:40         | server   | A:40           |
+	| 40:A          | server   | 40:40          |
+	| 40:40         | receiver | 40:A           |
+	| A:40          | receiver | 40:40          |
+	# Game won from an ending score
+	| A:40          | server   | server wins!   |
+	| 40:A          | receiver | receiver wins! |
