@@ -1,12 +1,11 @@
-﻿namespace Kata.Tennis
+﻿namespace Kata.Tennis.Scores
 {
-    public class GameWonScore : Score
+    public class WinnerScore : Score
     {
-        public override bool IsGameWon => true;
-
+        public override bool IsWinner => true;
         public Player Player { get; }
 
-        public GameWonScore(Player player)
+        public WinnerScore(Player player)
         {
             Player = player;
         }

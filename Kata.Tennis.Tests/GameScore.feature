@@ -25,3 +25,13 @@ Scenario: Server wins the game on fourty-love
 	Given the score is 40:0
 	When the server wins a point
 	Then the score is server wins!
+
+Scenario: Server wins a point on deuce
+	Given the score is 40:40
+	When the server wins a point
+	Then the score is A:40
+
+Scenario: Server wins a point on advantage receiver
+	Given the score is 40:A
+	When the server wins a point
+	Then the score is 40:40

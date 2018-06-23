@@ -1,13 +1,12 @@
 ﻿using System;
 
-namespace Kata.Tennis
+namespace Kata.Tennis.Scores
 {
     public class IncreasingScore : Score
     {
-        public override bool IsGameWon => false;
+        public override bool IsWinner => false;
         public Player Player { get; }
         private int Points { get; }
-        private const int MaxPoint = 40;
 
         public IncreasingScore(Player player, int points)
         {
@@ -15,7 +14,7 @@ namespace Kata.Tennis
             Points = points;
         }
 
-        public override string Format() => Points.ToString("0");
+        public override string Format() => $"{Points:0}";
 
         public override Score PointFor(Player wins)
         {
@@ -23,7 +22,7 @@ namespace Kata.Tennis
                 return this;
 
             if (Points == MaxPoint)
-                return new GameWonScore(Player);
+                return new WinnerScore(Player);
 
             return new IncreasingScore(Player, NextPoints());
         }

@@ -40,13 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="Score.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="IncreasingScore.cs" />
+    <Compile Include="Scores\AdvantageReceiverScore.cs" />
+    <Compile Include="Scores\AdvantageServerScore.cs" />
+    <Compile Include="Scores\DeuceScore.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Scores\IncreasingScoreSet.cs" />
+    <Compile Include="Scores\Score.cs" />
+    <Compile Include="Scores\Player.cs" />
+    <Compile Include="Scores\IncreasingScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GameWonScore.cs" />
+    <Compile Include="Scores\WinnerScore.cs" />
+    <Compile Include="Scores\EndingScore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Kata.Tennis
+﻿namespace Kata.Tennis.Scores
 {
     public enum Player
     {
