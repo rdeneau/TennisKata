@@ -12,7 +12,7 @@ namespace Kata.Tennis.Scores
         {
             Score result = new IncreasingScoreSet(scores);
             Score deuce  = new DeuceScore();
-            return result.Format() == deuce.Format() ? deuce : result;
+            return result.Value == deuce.Value ? deuce : result;
         }
 
         private static IEnumerable<Score> CreateInnerScores(string score) =>
@@ -26,9 +26,8 @@ namespace Kata.Tennis.Scores
             _scores = scores;
         }
 
-        public override string Format() =>
-            _scores.Select(x => x.Format())
-                   .JoinToString($"{PointsSeparator}");
+        public override string Value => _scores.Select(x => x.Value)
+            .JoinToString($"{PointsSeparator}");
 
         public override Score PointFor(Player wins)
         {

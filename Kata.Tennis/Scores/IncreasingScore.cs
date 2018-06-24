@@ -14,7 +14,7 @@ namespace Kata.Tennis.Scores
             Points = points;
         }
 
-        public override string Format() => $"{Points:0}";
+        public override string Value => $"{Points:0}";
 
         public override Score PointFor(Player wins)
         {

@@ -5,7 +5,7 @@ namespace Kata.Tennis.Scores
     public abstract class Score
     {
         public abstract bool IsWinner { get; }
-        public abstract string Format();
+        public abstract string Value { get; }
         public abstract Score PointFor(Player wins);
 
         protected const string Advantage = "A";
@@ -19,7 +19,7 @@ namespace Kata.Tennis.Scores
                 new AdvantageReceiverScore(),
                 new AdvantageServerScore()
             }
-            .FirstOrDefault(x => x.Format() == score)
+            .FirstOrDefault(x => x.Value == score)
             ?? new IncreasingScoreSet(score);
     }
 }

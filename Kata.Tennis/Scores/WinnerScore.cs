@@ -12,6 +12,6 @@
 
         public override Score PointFor(Player wins) => this;
 
-        public override string Format() => $"{Player} wins!";
+        public override string Value => $"{Player} wins!";
     }
 }

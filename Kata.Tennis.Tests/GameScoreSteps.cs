@@ -25,11 +25,8 @@ namespace Kata.Tennis.Tests
         [Then(@"the score is (.*)")]
         public void ThenTheScoreIs(string expectedScore)
         {
-            var result = Score
-                .Parse(_score)
-                .PointFor(_wins)
-                .Format();
-            Check.That(result).IsEqualTo(expectedScore);
+            var result = Score.Parse(_score).PointFor(_wins);
+            Check.That(result.Value).IsEqualTo(expectedScore);
         }
     }
 }

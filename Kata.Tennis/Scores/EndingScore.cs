@@ -11,7 +11,7 @@
             _score = score;
         }
 
-        public override string Format() => _score;
+        public override string Value => _score;
 
         public override Score PointFor(Player wins) => Player == wins ? PointForServer : PointForReceiver;
 
